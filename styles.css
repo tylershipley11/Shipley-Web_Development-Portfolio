@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0;
+}
+
+body{
+    background-color: #121212;
+    color: white ;
+    margin: none;
+    padding: none;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+/* ---------------------------------------------
+                NAV BAR
+---------------------------------------------- */
+
+nav{
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+nav ul{
+    color: white;
+    list-style: none;
+    display: inline-flex;
+    margin-right: 20px;
+}
+
+nav a{
+    text-decoration: none;
+}
+
+nav ul li{
+    padding: 0 20px;
+}
+
+nav ul :active{
+    color: white;
+}
+
+nav ul :visited{
+    color: white;
+}
+
+
+
+
+
+
+/* ---------------------------------------------
+                HERO / HOME
+---------------------------------------------- */
+
+#personal-img{
+    max-width: 240px;
+}
+
+.hero-container{
+    display: flex;
+    justify-content: start;
+}
+
+
+.hero-items{
+    margin: 130px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    z-index: 1;
+}
+
+.hero-items h1{
+    font-size: 50px;
+    font-weight: 100;
+    line-height: 30px;
+}
+
+.hero-txt{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 1000px;
+}
+
+.hero-items #green-IBMplexMono{
+    line-height: 1;
+}
+
+.hero-items p{
+    margin-top: 30px;
+}
+
+
+#yellow-purble-aguafinaScript{
+    font-family: 'aguafina script';
+    background: 
+        linear-gradient(90deg, yellow, rgb(196, 0, 196) 51%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    padding: 0 13px;
+}
+
+#green-IBMplexMono{
+    background: #0eab19;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#hero-background{
+        z-index: -2;
+        opacity: .75;
+        filter: blur(200px);
+        background-image: linear-gradient(#601ef9, rgba(255, 255, 255, 0));
+        border-radius: 100%;
+        width: 90%;
+        height: 24rem;
+        position: absolute;
+        top: 25%;
+        bottom: 0%;
+        left:0;
+        right: 0;
+        margin: 0 auto;
+}
+
+.design-svg{
+    width: 50%;
+}
+
+.stars{
+    position: absolute; /* Needed to position the overlay */
+    background: url('resources/Stars.png') center/cover no-repeat;
+    width: 100%;  
+    height: 300px;
+    z-index: -1;
+    top: 20px;       
+}
+
+
+/* ---------------------------------------------
+                PROJECTS
+---------------------------------------------- */
+
+.projects-container {
+    position: relative; /* Needed to position the overlay */
+    background: url('resources/DitgitalSpaceNoSun.png') center/cover no-repeat;
+    width: 100%;                    
+    height: 100vh; 
+    margin-top: -400px;
+    z-index: -3;
+    display: flex;
+}
+
+h2{
+    text-align: center;
+    font-weight: lighter;
+    font-size: 40px;
+    margin-top: 30px;
+}
+
+.projects-items{
+    width: 100%;
+    display: flex;
+    margin-top: 400px;
+    z-index: 1;
+    justify-content: center;
+}
+
+#retro-computer{
+    position: absolute;
+    left: 10%;
+    width: 50%;
+    max-width: 600px;
+    min-width: 300px;
+    height:min-content;
+}
+
+.computer-background{
+    background-color: #0eab19;
+}
