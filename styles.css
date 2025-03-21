@@ -150,11 +150,10 @@ nav ul :visited{
 ---------------------------------------------- */
 
 .projects-container {
-    position: relative; /* Needed to position the overlay */
+    position: absolute; /* Needed to position the overlay */
     background: url('resources/DitgitalSpaceNoSun.png') center/cover no-repeat;
-    width: 100%;                    
-    height: 100vh; 
-    margin-top: -400px;
+    width: 100%;
+    height: 1000px;
     z-index: -3;
     display: flex;
 }
@@ -166,23 +165,125 @@ h2{
     margin-top: 30px;
 }
 
-.projects-items{
-    width: 100%;
-    display: flex;
+/* Remove flex from .projects-items (or keep if needed for other content). 
+   But don’t center .computer-wrapper with flex. */
+   .projects-items {
+    display: block; 
     margin-top: 400px;
+    position: relative; /* So .computer-wrapper can be absolutely positioned here if you like */
+    width: 100%;
     z-index: 1;
-    justify-content: center;
-}
-
-#retro-computer{
+  }
+  
+  /* Base .computer-wrapper styles (mobile-first) */
+  .computer-wrapper {
+    position: absolute;   /* or absolute if you prefer controlling top/left within .projects-items */
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 240px;
+  }
+  
+  #retro-computer {
     position: absolute;
-    left: 10%;
-    width: 50%;
-    max-width: 600px;
-    min-width: 300px;
-    height:min-content;
-}
-
-.computer-background{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+  }
+  
+  .screen-content {
+    position: absolute;
+    z-index: 0;
+    top: 10%; 
+    left: 20%; 
+    width: 60%; 
+    height: 50%;
     background-color: #0eab19;
-}
+  }
+  
+  /* --- Media Queries --- */
+  
+  /* 1) Up to 480px */
+  @media (max-width: 480px) {
+    .computer-wrapper {
+      width: 240px;
+      height: 240px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .projects-container{
+        top: 320px;
+    }
+  }
+  
+  /* 2) 481px to 768px */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .computer-wrapper {
+      width: 384px;
+      height: 384px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .projects-container{
+        top: 260px;
+    }
+  }
+  
+  /* 3) 769px to 1024px */
+  @media (min-width: 769px) and (max-width: 1124px) {
+    .computer-wrapper {
+      width: 480px;
+      height: 480px;
+      left: 27%;
+    }
+    .projects-container{
+        top: 260px;
+    }
+  }
+  
+  /* 4) 1025px to 1280px */
+  @media (min-width: 1125px) and (max-width: 1280px) {
+    .computer-wrapper {
+      width: 540px;
+      height: 540px;
+      left: 112px;
+      transform: none;
+      bottom: 10%;
+    }
+    .projects-container{
+        top: 260px;
+    }
+  }
+  
+  /* 5) 1281px to 1440px */
+  @media (min-width: 1279px) and (max-width: 1440px) {
+    .computer-wrapper {
+      width: 540px;
+      height: 540px;
+      left: 9%; /* 2/5 of 1440 */
+      transform: none;
+    }
+    .projects-container{
+        top: 260px;
+    }
+
+  }
+  
+  /* 6) 1441px and above */
+  @media (min-width: 1441px) {
+    .computer-wrapper {
+      width: 540px;
+      height: 540px;
+      left: 17%; /* 2/5 of 1920 */
+      transform: none;
+    }
+
+    .projects-container{
+        top: 260px;
+    }
+  }
+  
