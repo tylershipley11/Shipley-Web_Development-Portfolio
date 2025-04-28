@@ -250,19 +250,19 @@
                 title: 'Sweet Cravings',
                 desc: 'A website for Sweet Cravings, an e-commerce shop selling handmade sweets with a full cart & checkout flow. Built with React and Tailwind CSS.',
                 tech: ['html.png', 'css.png', 'react.png', 'tailwind.png'],
-                image: '/portfolio/resources/sweet-cravings.png'
+                image: 'resources/sweet-cravings.png'
             },
             {
                 title: 'Get It Done',
                 desc: 'A versatile to-do/checklist web app you can use anywhere—from groceries to project tasks—built with vanilla HTML, CSS, and JavaScript.',
                 tech: ['html.png', 'css.png', 'javascript.png'],
-                image: '/portfolio/resources/to-do.png'
+                image: 'resources/to-do.png'
             },
             {
                 title: 'WolfPack Pole Vault',
                 desc: 'A static showcase site for the WolfPack Pole Vault club, featuring club info, contact forms, and pole-rental details. Created using HTML, CSS, and JS.',
                 tech: ['html.png', 'css.png', 'javascript.png'],
-                image: '/portfolio/resources/wolfpack.png'
+                image: 'resources/wolfpack.png'
             }];
             let currentIndex = 0;
             const titleEl = document.getElementById('project-title');
@@ -282,7 +282,7 @@
                     techEl.innerHTML = '';
                     p.tech.forEach(f => {
                         const img = document.createElement('img');
-                        img.src = `/portfolio/resources/${f}`;
+                        img.src = `resources/${f}`;
                         img.alt = f.split('.')[0] + ' logo';
                         techEl.appendChild(img);
                     });
