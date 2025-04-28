@@ -9,9 +9,12 @@ body{
     color: white ;
     margin: none;
     padding: none;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+p{
+  font-size: 20px;
+}
 /* ---------------------------------------------
                 NAV BAR
 ---------------------------------------------- */
@@ -23,13 +26,16 @@ nav{
     margin-top: 10px;
     margin-right: 15px;
     margin-left: 15px;
+    z-index: 7;
+    position: relative;
+    width: 100%;
 }
 
 nav ul{
     color: white;
     list-style: none;
     display: inline-flex;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 nav a{
@@ -48,6 +54,57 @@ nav ul :visited{
     color: white;
 }
 
+/* overlay that dims & blurs the background */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  display: none;                    /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  z-index: 10000;
+}
+
+/* the frosted‑glass panel */
+.modal-content {
+  position: relative;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 90%;
+  width: 320px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  color: #fff;
+  text-align: center;
+}
+
+.modal-content h2{
+  margin-bottom: 10px;
+}
+
+/* close button (×) in the top‑right */
+.modal-close {
+  position: absolute;
+  top: 8px; right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* links inside the modal */
+.modal-content a {
+  color: #1952d6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
 
 
 
@@ -59,6 +116,7 @@ nav ul :visited{
 
 #personal-img{
     max-width: 240px;
+    transform: rotate(15deg);
 }
 
 .hero-container{
@@ -74,7 +132,7 @@ nav ul :visited{
     justify-content: center;
     align-items: center;
     gap: 5%;
-    z-index: 1;
+    z-index: 4;
 }
 
 .hero-items h1{
@@ -88,6 +146,7 @@ nav ul :visited{
     flex-direction: column;
     width: 50%;
     max-width: 1000px;
+    font-weight: 100;
 }
 
 .hero-items #green-IBMplexMono{
@@ -116,7 +175,7 @@ nav ul :visited{
 }
 
 #hero-background{
-        z-index: -2;
+        z-index: 2;
         opacity: .75;
         filter: blur(200px);
         background-image: linear-gradient(#601ef9, rgba(255, 255, 255, 0));
@@ -140,9 +199,117 @@ nav ul :visited{
     background: url('resources/Stars.png') center/cover no-repeat;
     width: 100%;  
     height: 300px;
-    z-index: -1;
+    z-index: 1;
     top: 20px;       
 }
+
+/* Only hide the native cursor when hovering the astronaut link */
+#contact-link-img {
+  cursor: none;
+}
+
+/* Style for your custom “Contact Me!” label */
+#contact-cursor-text {
+  position: fixed;
+  pointer-events: none;
+  display: none;
+  padding: 4px 8px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+
+
+/* ---------------------------------------------
+   HERO RESPONSIVE
+---------------------------------------------- */
+
+/* 1) Large tablets / small desktops */
+@media (max-width: 1024px) {
+  .hero-items {
+    gap: 2%;                     /* tighten spacing */
+  }
+  .hero-items h1 {
+    font-size: 3rem;             /* ~48px */
+    line-height: 1.1;
+  }
+  .hero-txt {
+    width: 60%;
+  }
+  #personal-img {
+    max-width: 200px;
+  }
+  #hero-background {
+    width: 100%;
+    height: 20rem;
+  }
+}
+
+/* 2) Tablets & landscape phones */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  .hero-items {
+    flex-direction: column;
+    margin: 4rem 0 2rem;
+    gap: 1.5rem;
+  }
+  .hero-txt {
+    width: 100%;
+    text-align: center;
+  }
+  .hero-items h1 {
+    font-size: 2.5rem;           /* ~40px */
+  }
+  .hero-items p {
+    font-size: 1rem;             /* ~16px */
+    margin: 10px auto;
+    width: 65%;
+  }
+  #personal-img {
+    max-width: 180px;
+  }
+  #hero-background {
+    position: absolute;
+    top: 40%;
+    width: 120%;
+    height: 16rem;
+    filter: blur(150px);
+  }
+}
+
+/* 3) Portrait phones */
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 1.5rem 0.5rem;
+  }
+  .hero-items h1 {
+    font-size: 2rem;             /* ~32px */
+  }
+  .hero-items p {
+    font-size: 0.9rem;
+    width: 80%;
+    margin: 10px auto;
+  }
+  #personal-img {
+    max-width: 140px;
+  }
+  #hero-background {
+    top: 35%;
+    width: 150%;
+    height: 12rem;
+    filter: blur(120px);
+  }
+}
+
 
 
 /* ---------------------------------------------
@@ -150,19 +317,20 @@ nav ul :visited{
 ---------------------------------------------- */
 
 .projects-container {
-    position: absolute; /* Needed to position the overlay */
+   position: absolute;
     background: url('resources/DitgitalSpaceNoSun.png') center/cover no-repeat;
     width: 100%;
     height: 1000px;
-    z-index: -3;
     display: flex;
 }
 
-h2{
+.projcts-title{
+  position: relative;
     text-align: center;
     font-weight: lighter;
     font-size: 40px;
     margin-top: 30px;
+    z-index: 4;
 }
 
 /* Remove flex from .projects-items (or keep if needed for other content). 
@@ -204,19 +372,139 @@ h2{
     height: 50%;
     background-color: #0eab19;
   }
+
+
+  .project-info{
+    width: 40%;
+    position: relative;
+    left: 50%;
+    margin-top:  80px;
+  }
+
+  .project-info span{
+    background-color: #0eab19;
+    padding: 2px;
+    border-radius: 7px;
+    font-weight: bold;
+  }
+
+  .project-info h3{
+    margin-bottom: 20px;
+  }
+
+  .project-info p{
+    line-height: 1.6em;
+    font-weight: 100;
+  }
+
+  #tech-stack{
+    margin-top: 50px;
+    text-align: end;
+    margin-right: 40px;
+  }
+
+  .project-images{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 auto;
+  }
+
+  .project-images img{
+    width: 15%;
+    max-width: 150px;
+    height:fit-content;
+  }
+
+  .project-images img:nth-of-type(3){
+   
+  }
+
+    /* Fade transitions on the entire project block */
+.projects-items {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Nav buttons on the screen */
+.proj-btn {
+  position: absolute;
+  top: 56%;
+  transform: translate(-50%, -50%); /* center the button on its anchor point */
+  background: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* place them at 20% in from each side */
+.proj-btn.prev {
+  left: 40%;
+}
+
+.proj-btn.next {
+  left: 50%;
+}
+
+
+.proj-btn:hover{
+  background: rgb(163, 163, 163);
+}
   
   /* --- Media Queries --- */
   
   /* 1) Up to 480px */
   @media (max-width: 480px) {
     .computer-wrapper {
-      width: 240px;
-      height: 240px;
+      width: 260px;
+      height: 260px;
       left: 50%;
       transform: translateX(-50%);
+      top: 25%;
     }
     .projects-container{
-        top: 320px;
+        top: 200px;
+    }
+
+    .project-info{
+      width: 90%;
+      left: 5%;
+      top: 345px;
+      display: flex;
+      justify-content:flex-start;
+      align-items: center;
+    }
+
+    .project-info p{
+      line-height: 1.1em;
+    }
+
+    #project-title{
+      text-align: center;
+      width: 156%;
+    }
+    
+    #tech-stack{
+      display: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    .project-images{
+      display: flex;
+    }
+
+    .proj-btn.prev {
+      left: 5%;
+    }
+    
+    .proj-btn.next {
+      left: 95%;
     }
   }
   
@@ -229,7 +517,35 @@ h2{
       transform: translateX(-50%);
     }
     .projects-container{
-        top: 260px;
+        top: 360px;
+    }
+
+    .project-info{
+      width: 90%;
+      left: 5%;
+      top: 345px;
+      display: flex;
+      justify-content:flex-start;
+      align-items: center;
+    }
+
+    .project-info p{
+      line-height: 1.1em;
+    }
+
+    #project-title{
+      text-align: center;
+      width: 156%;
+    }
+    
+    #tech-stack{
+      display: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    .project-images{
+      display: flex;
     }
   }
   
@@ -241,7 +557,7 @@ h2{
       left: 27%;
     }
     .projects-container{
-        top: 260px;
+        top: 320px;
     }
   }
   
@@ -255,7 +571,7 @@ h2{
       bottom: 10%;
     }
     .projects-container{
-        top: 260px;
+        top: 320px;
     }
   }
   
@@ -268,7 +584,7 @@ h2{
       transform: none;
     }
     .projects-container{
-        top: 260px;
+        top: 320px;
     }
 
   }
@@ -283,7 +599,239 @@ h2{
     }
 
     .projects-container{
-        top: 260px;
+        top: 320px;
     }
   }
-  
+
+/* =====================================================
+                    About Me
+======================================================*/
+
+/* ---------------------------
+   ABOUT ME SECTION
+--------------------------- */
+
+.about-me-container {
+  position: relative;
+  top: 0;
+  z-index: 9;
+  overflow:hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 10%;
+  background-color: #121212;
+  margin-top: 600px;
+}
+
+.about-me-container.visible {
+  bottom: 0;
+}
+
+
+/* Blurred radial behind everything */
+#about-background {
+  position: absolute;
+  top: 950px;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  background-image: linear-gradient(#1235f8, rgba(255, 255, 255, 0));
+  border-radius: 50%;
+  filter: blur(200px);
+  opacity: 0.95;
+  z-index: 0;
+}
+
+/* Left column wrapper */
+.about-content {
+  position: relative;               /* To stack above the blur */
+  z-index: 1;
+  max-width: 50%;                  /* Take up half the container */
+}
+
+/* Heading & tagline */
+.about-header h2 {
+  font-size: 3.5rem;                /* ~60px */
+  line-height: 1.1;
+  font-weight: 300;
+  margin: 0;
+  text-align: left;
+  white-space: nowrap;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.about-header p {
+  font-size: 1.25rem;               /* ~20px */
+  margin-top: 0.5rem;
+  color: #fff;
+  text-align: right;
+}
+
+.about-header{
+  width: fit-content;
+  z-index: 7;
+}
+
+.about-me-container h3{
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+
+/* Qualifications lists */
+.qualifications {
+  margin-top: 2rem;
+}
+
+/* Common UL styling */
+.qualifications ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0;
+}
+
+/* Badge styling */
+.qualifications ul li {
+  background: linear-gradient(rgba(254,254,254,0.65), rgba(115,115,115,0.58));
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Right column: illustration */
+.about-image {
+  position: relative;
+  z-index: 1;
+  max-width: 40%;                   /* ~40% of container */
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 300px;
+}
+
+/* hides it until hover, styles the label */
+#promise-cursor-text {
+  position: fixed;
+  pointer-events: none;
+  display: none;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10000;
+  cursor: none;
+}
+
+.promise-link{
+  cursor: none;
+}
+
+@keyframes arrowPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -10px);
+  }
+}
+
+/* Floating arrow */
+#scroll-down-arrow {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3.5rem;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  animation: none;
+}
+#scroll-down-arrow.visible {
+  opacity: 0.7;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: arrowPulse 1.3s ease-in-out infinite;
+}
+
+/* About panel */
+.about-wrapper#about-panel {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(100%);   /* start hidden off-screen */
+  transition: transform 0.6s ease;
+  z-index: 1001;
+}
+.about-wrapper#about-panel.open {
+  transform: translateY(0);      /* slide up into view */
+}
+
+/* Close button */
+#about-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+
+#about-panel {
+  max-height: 100vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.6s ease;
+}
+
+
+
+
+
+/* ---------------------------
+   Responsive: stack at ≤768px
+--------------------------- */
+@media (max-width: 868px) {
+  .about-me-container {
+    flex-direction: column;
+    padding: 2rem 5%;
+  }
+
+  .about-content,
+  .about-image {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .about-image {
+    margin-top: 2rem;
+  }
+
+  #about-background{
+    top: 1200px;
+  }
+}
