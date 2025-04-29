@@ -323,7 +323,7 @@
 
             function onDownAttempt(e) {
                 if (!arrow.classList.contains('visible') || aboutPanel.classList.contains('open')) return;
-                if ((e.type === 'wheel' && e.deltaY > 40) || e.type === 'touchmove') {
+                if ((e.type === 'wheel' && e.deltaY > 100) || e.type === 'touchmove') {
                     if (++attempts >= 2) openAbout();
                 }
             }
